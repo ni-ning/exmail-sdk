@@ -9,7 +9,7 @@ sdict = {
     'packages': ['exmail'],
     'zip_safe': False,
     'description': 'Tencent Exmail SDK for Python',
-    'ong_description': 'Tencent Exmail SDK for Python',
+    'long_description': 'Tencent Exmail SDK for Python',
     'url': 'https://github.com/ni-ning/exmail-sdk',
     'author': 'ni-ning',
     'author_email': 'nining1314@gmail.com',
