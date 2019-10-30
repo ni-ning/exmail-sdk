@@ -77,7 +77,7 @@ class BaseClient(object):
 
     def _handle_result(self, res, method=None, url=None, result_processor=None, **kwargs):
         print('from _handle_result: %s' % res)
-        return res
+        return res.json()
 
     def _handle_pre_request(self, method, uri, kwargs):
         return method, uri, kwargs
