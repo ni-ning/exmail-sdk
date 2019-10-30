@@ -3,6 +3,10 @@ from __future__ import absolute_import, unicode_literals
 
 import logging
 
+from exmail.client import SecretClient
+from exmail.core.exceptions import EmailClientException, EmailException
+
+
 __VERSION__ = '0.0.1'
 __AUTHOR__ = 'ni-ning'
 
