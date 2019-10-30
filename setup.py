@@ -5,7 +5,7 @@ from exmail import __VERSION__
 sdict = {
     'name': 'exmail-sdk',
     'version': __VERSION__,
-    'keywords': 'tencent, qq, exmail, exmail-sdk, SDK',
+    'keywords': 'tencent, exmail, exmail-sdk, SDK',
     'packages': ['exmail'],
     'zip_safe': False,
     'description': 'Tencent Exmail SDK for Python',

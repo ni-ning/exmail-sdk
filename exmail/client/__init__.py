@@ -1,16 +1,20 @@
 # -*- coding:utf-8 -*-
 from __future__ import absolute_import, unicode_literals
 
+from exmail.client import api
 from exmail.client.base import BaseClient
-from exmail.storage.cache import ExmailCache
+from exmail.storage.cache import EmailCache
 
 
-class ExmailClient(BaseClient):
+class EmailClient(BaseClient):
+
+    user = api.User()
+    department = api.Department()
 
     def __init__(self, corp_id, prefix='client', storage=None, timeout=None, auto_retry=True):
-        super(ExmailClient, self).__init__(storage, timeout, auto_retry)
+        super(EmailClient, self).__init__(storage, timeout, auto_retry)
         self.corp_id = corp_id
-        self.cache = ExmailCache(self.storage, prefix)
+        self.cache = EmailCache(self.storage, prefix)
 
     @property
     def access_token(self):
@@ -32,7 +36,7 @@ class ExmailClient(BaseClient):
         raise NotImplementedError
 
 
-class SecretClient(ExmailClient):
+class SecretClient(EmailClient):
 
     def __init__(self, corp_id, corp_secret, storage=None, timeout=None, auto_retry=True):
         super(SecretClient, self).__init__(corp_id, 'secret:'+corp_id, storage, timeout, auto_retry)

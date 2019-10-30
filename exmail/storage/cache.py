@@ -7,10 +7,10 @@ from exmail.storage import BaseStorage
 
 
 def _is_cache_item(obj):
-    return isinstance(obj, ExmailCacheItem)
+    return isinstance(obj, EmailCacheItem)
 
 
-class ExmailCacheItem(object):
+class EmailCacheItem(object):
 
     def __init__(self, cache=None, name=None):
         self.cache = cache
@@ -52,7 +52,7 @@ class BaseCache(object):
         self.prefix = prefix
 
 
-class ExmailCache(BaseCache):
-    access_token = ExmailCacheItem()
+class EmailCache(BaseCache):
+    access_token = EmailCacheItem()
 
 
