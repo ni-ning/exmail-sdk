@@ -9,6 +9,7 @@ from six.moves.urllib.parse import urljoin
 
 from exmail.client.api.base import EmailBaseAPI
 from exmail.storage.memorystorage import MemoryStorage
+from exmail.core.utils import json_loads
 from exmail.core.exceptions import EmailClientException
 
 logger = logging.getLogger(__name__)
@@ -19,7 +20,6 @@ def _is_api_endpoint(obj):
 
 
 class BaseClient(object):
-
     _http = requests.Session()
 
     API_BASE_URL = 'https://api.exmail.qq.com/cgi-bin'
@@ -64,8 +64,18 @@ class BaseClient(object):
 
         try:
             res.raise_for_status()
-        except requests.RequestException as reqe:
-            logger.error('')
+        except requests.RequestException as e:
+            logger.error('\n【请求方法和地址】: %s %s'
+                         '\n【请求参数】: params %s, data: %s'
+                         '\n【异常信息】: %s' % (method, url,
+                                           kwargs.get('params', ''), kwargs.get('data', ''), str(e)))
+
+            raise EmailClientException(
+                errcode=None,
+                errmsg=None,
+                client=self,
+                request=e.request,
+                response=e.response)
 
         result = self._handle_result(
             res, method, url, result_processor, **kwargs
@@ -76,8 +86,29 @@ class BaseClient(object):
         return result
 
     def _handle_result(self, res, method=None, url=None, result_processor=None, **kwargs):
-        print('from _handle_result: %s' % res)
-        return res.json()
+        if not isinstance(res, dict):
+            result = res.json()
+        else:
+            result = res
+        if not isinstance(result, dict):
+            return result
+
+        if 'errcode' in result:
+            result['errcode'] = int(result['errcode'])
+        if 'errcode' in result and result['errcode'] != 0:
+            errcode = result['errcode']
+            errmsg = result.get('errmsg', errcode)
+            logger.error('\n【请求方法和地址】: %s %s'
+                         '\n【请求参数】: params %s, data: %s'
+                         '\n【异常信息】: %s' % (method, url,
+                                           kwargs.get('params', ''), kwargs.get('data', ''), result))
+            raise EmailClientException(errcode,
+                                       errmsg,
+                                       client=self,
+                                       request=res.request,
+                                       response=res)
+
+        return result if not result_processor else result_processor(result)
 
     def _handle_pre_request(self, method, uri, kwargs):
         return method, uri, kwargs

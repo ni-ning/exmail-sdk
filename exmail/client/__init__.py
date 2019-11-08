@@ -32,6 +32,14 @@ class EmailClient(BaseClient):
         uri = '%s%saccess_token=%s' % (uri, '&' if '?' in uri else '?', self.access_token)
         return method, uri, kwargs
 
+    def _handle_request_except(self, e, func, *args, **kwargs):
+        # 可根据状态码重试
+        if e.errcode in tuple():
+            self.cache.access_token.delete()
+            if self.auto_retry:
+                return func(*args, **kwargs)
+        raise e
+
     def get_access_token(self):
         raise NotImplementedError
 
