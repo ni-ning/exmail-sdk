@@ -5,11 +5,9 @@ import inspect
 import logging
 import requests
 import json
-from six.moves.urllib.parse import urljoin
 
 from exmail.client.api.base import EmailBaseAPI
 from exmail.storage.memorystorage import MemoryStorage
-from exmail.core.utils import json_loads
 from exmail.core.exceptions import EmailClientException
 
 logger = logging.getLogger(__name__)
@@ -41,9 +39,10 @@ class BaseClient(object):
     def _request(self, method, url_or_endpoint, **kwargs):
         if not url_or_endpoint.startswith(('http://', 'https://')):
             api_base_url = kwargs.pop('api_base_url', self.API_BASE_URL)
-            url = urljoin(api_base_url, url_or_endpoint)
+            url = "%s%s" % (api_base_url, url_or_endpoint)
         else:
             url = url_or_endpoint
+
         if 'params' not in kwargs:
             kwargs['params'] = {}
         if isinstance(kwargs.get('data', ''), dict):

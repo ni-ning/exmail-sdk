@@ -13,6 +13,6 @@ class User(EmailBaseAPI):
         :return:
         """
         return self._get(
-            '/user/get',
+            '/cgi-bin/user/get',
             {'userid': userid}
         )
