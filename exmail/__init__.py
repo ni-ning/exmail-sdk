@@ -7,7 +7,7 @@ from exmail.client import SecretClient
 from exmail.core.exceptions import EmailClientException, EmailException
 
 
-__VERSION__ = '0.0.2'
+__VERSION__ = '0.0.3'
 __AUTHOR__ = 'ni-ning'
 
 
