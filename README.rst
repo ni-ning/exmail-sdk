@@ -2,6 +2,21 @@
 Tencent Exmail SDK for Python
 ################################
 
+
+腾讯企业邮第三方 Python SDK。
+`【阅读文档】 <https://exmail-sdk.readthedocs.io/zh_CN/latest/>`_。
+
+
+********
+功能特性
+********
++ 腾讯企业邮接入api
+
+
+********
+安装
+********
+
 目前 exmail-sdk 支持的 Python 环境有 2.7, 3.4, 3.5, 3.6, 3.7, 3.8。
 
 
