@@ -17,7 +17,7 @@ import sphinx_rtd_theme
 #
 import os
 import sys
-import exmail
+# import exmail
 
 
 sys.path.insert(0, os.path.abspath('..'))
@@ -26,12 +26,12 @@ sys.path.insert(0, os.path.abspath('..'))
 
 project = 'exmail-sdk'
 copyright = '2019, ni-ning'
-author = exmail.__AUTHOR__
+author = 'ni-ning'
 
 # The short X.Y version
-version = exmail.__VERSION__
+version = '0.0.4'
 # The full version, including alpha/beta/rc tags
-release = exmail.__VERSION__
+release = '0.0.4'
 
 
 # -- General configuration ---------------------------------------------------
