@@ -19,6 +19,13 @@ exmail-sdk 是一个腾讯企业邮的第三方 Python SDK，实现了企业邮�
 建议在使用前先阅读 `腾讯企业邮平台文档 <https://exmail.qq.com/qy_mng_logic/doc#10001>`
 
 
+.. toctree::
+   :glob:
+   :maxdepth: 2
+
+   client/index
+
+
 Changelogs
 -------------
 
