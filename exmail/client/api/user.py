@@ -45,6 +45,7 @@ class User(EmailBaseAPI):
     def get(self, userid):
         """
         获取成员详情
+
         :param userid: 员工在企业邮的邮箱，企业用来唯一标识用户的字段
         :return:
         """
@@ -61,7 +62,6 @@ class User(EmailBaseAPI):
         :param fetch_child:  是否递归获取子部门下面的成员
         :return:
         '''
-
         return self._get(
             '/user/simplelist',
             {'department_id': department_id, 'fetch_child': int(fetch_child)}
@@ -75,7 +75,6 @@ class User(EmailBaseAPI):
         :param fetch_child: 是否递归获取子部门下面的成员
         :return:
         '''
-
         return self._get(
             '/user/list',
             {'department_id': department_id, 'fetch_child': int(fetch_child)}
