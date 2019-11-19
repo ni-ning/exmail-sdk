@@ -6,14 +6,15 @@ from exmail.client.base import BaseClient
 from exmail.storage.cache import EmailCache
 
 
-class EmailClient(BaseClient):
+class SecretClient(BaseClient):
 
     user = api.User()
     department = api.Department()
 
-    def __init__(self, corp_id, prefix='client', storage=None, timeout=None, auto_retry=True):
-        super(EmailClient, self).__init__(storage, timeout, auto_retry)
+    def __init__(self, corp_id, corp_secret, prefix='client', storage=None, timeout=None, auto_retry=True):
+        super(SecretClient, self).__init__(storage, timeout, auto_retry)
         self.corp_id = corp_id
+        self.corp_secret = corp_secret
         self.cache = EmailCache(self.storage, prefix)
 
     @property
@@ -41,18 +42,9 @@ class EmailClient(BaseClient):
         raise e
 
     def get_access_token(self):
-        raise NotImplementedError
-
-
-class SecretClient(EmailClient):
-
-    def __init__(self, corp_id, corp_secret, storage=None, timeout=None, auto_retry=True):
-        super(SecretClient, self).__init__(corp_id, 'secret:'+corp_id, storage, timeout, auto_retry)
-        self.corp_secret = corp_secret
-
-    def get_access_token(self):
         return self._request(
             'GET',
             '/gettoken',
             params={'corpid': self.corp_id, 'corpsecret': self.corp_secret}
         )
+
