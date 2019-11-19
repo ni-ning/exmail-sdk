@@ -85,7 +85,7 @@ class User(EmailBaseAPI):
         '''
         批量检查账号
 
-        :param userlist:
+        :param userlist: 邮件账号列表
         :return:
         '''
         return self._post(
