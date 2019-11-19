@@ -88,7 +88,7 @@ class User(EmailBaseAPI):
         :param userlist:
         :return:
         '''
-        self._post(
+        return self._post(
             '/user/batchcheck',
             data={'userlist': userlist}
         )
