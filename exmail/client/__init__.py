@@ -12,6 +12,10 @@ class SecretClient(BaseClient):
     department = api.Department()
     tag = api.Tag()
     group = api.Group()
+    log = api.Log()
+    mail = api.Mail()
+    option = api.Option()
+    service = api.Service()
 
     def __init__(self, corp_id, corp_secret, prefix='client', storage=None, timeout=None, auto_retry=True):
         super(SecretClient, self).__init__(storage, timeout, auto_retry)
