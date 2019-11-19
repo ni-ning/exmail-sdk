@@ -58,13 +58,13 @@ class User(EmailBaseAPI):
         获取部门成员
 
         :param department_id: 获取的部门id。id为1时可获取根部门下的成员
-        :param fetch_child: 是否递归获取子部门下面的成员
+        :param fetch_child:  是否递归获取子部门下面的成员
         :return:
         '''
 
         return self._get(
             '/user/simplelist',
-            {'department_id': department_id, 'fetch_child': fetch_child}
+            {'department_id': department_id, 'fetch_child': int(fetch_child)}
         )
 
     def list(self, department_id=1, fetch_child=False):
@@ -78,7 +78,7 @@ class User(EmailBaseAPI):
 
         return self._get(
             '/user/list',
-            {'department_id': department_id, 'fetch_child': fetch_child}
+            {'department_id': department_id, 'fetch_child': int(fetch_child)}
         )
 
     def batch_check(self, userlist):

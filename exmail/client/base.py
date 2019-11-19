@@ -48,7 +48,7 @@ class BaseClient(object):
         if isinstance(kwargs.get('data', ''), dict):
             body = json.dumps(kwargs['data'], ensure_ascii=False)
             body = body.encode('utf-8')
-            kwargs['body'] = body
+            kwargs['data'] = body
             if 'headers' not in kwargs:
                 kwargs['headers'] = {}
             kwargs['headers']['Content-Type'] = 'application/json'
