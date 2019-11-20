@@ -5,8 +5,7 @@ from tests.api_base import BaseTestCase
 
 
 class DepartmentTestCase(BaseTestCase):
-    import conf
-    dept_id = getattr(conf, 'DEPT_ID', 1)
+    dept_id = 4913577855806636138
 
     def department_create(self):
         data = {

@@ -7,5 +7,11 @@ from exmail import SecretClient
 
 
 class BaseTestCase(unittest.TestCase):
-    config = getattr(conf, 'EXMAIL', {})
-    client = SecretClient(config['corp_id'], config['corp_secret'])
+
+    if conf.TESTING_ENV == 'local':
+
+        config = getattr(conf, 'EXMAIL', {})
+        client = SecretClient(config['corp_id'], config['corp_secret'])
+    elif conf.TESTING_ENV == 'travis':
+        import os
+        client = SecretClient(os.environ['CORP_ID'], os.environ['CORP_SECRET'])

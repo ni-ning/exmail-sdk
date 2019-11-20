@@ -3,8 +3,5 @@
   "EXMAIL": {
       "corp_id": "IbiCMwD4jIhV6YzK2Q",
       "corp_secret": "ififzO2VVaXVTCOpjt4N2af6HJk9H9XCzTFZXpUxrx8kCvdvysx8ZR1I7r1sRVdc"
-  },
-
-  # test_api_dept 测试父级部门
-  "DEPT_ID": 4913577855806636138
+  }
 }
