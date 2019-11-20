@@ -17,7 +17,9 @@ class SecretClient(BaseClient):
     option = api.Option()
     service = api.Service()
 
-    def __init__(self, corp_id, corp_secret, prefix='client', storage=None, timeout=None, auto_retry=True):
+    def __init__(self, corp_id, corp_secret,
+                 prefix='client', storage=None,
+                 timeout=None, auto_retry=True):
         super(SecretClient, self).__init__(storage, timeout, auto_retry)
         self.corp_id = corp_id
         self.corp_secret = corp_secret
@@ -53,4 +55,3 @@ class SecretClient(BaseClient):
             '/gettoken',
             params={'corpid': self.corp_id, 'corpsecret': self.corp_secret}
         )
-

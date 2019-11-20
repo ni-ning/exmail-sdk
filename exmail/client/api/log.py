@@ -65,5 +65,3 @@ class Log(EmailBaseAPI):
             '/log/operation',
             data=data
         )
-
-

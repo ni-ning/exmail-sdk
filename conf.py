@@ -15,4 +15,3 @@ def _load_to_dict(d, filename=None):
 
 
 _load_to_dict(globals(), filename='services.json')
-

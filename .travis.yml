@@ -1,0 +1,33 @@
+language: python
+
+notifications:
+  email: false
+
+sudo: false
+
+matrix:
+  include:
+    - env: TOX_ENV=py27
+      python: 2.7
+    - env: TOX_ENV=py34
+      python: 3.4
+    - env: TOX_ENV=py35
+      python: 3.5
+    - env: TOX_ENV=py36
+      python: 3.6
+    - env: TOX_ENV=py37
+      python: 3.7
+    - env: TOX_ENV=pypy
+      python: "pypy"
+    - env: TOX_ENV=pypy3
+      python: "pypy3"
+
+install:
+  - pip install tox
+  - pip install "flake8>3.7"
+
+before_script:
+  - "flake8 --ignore E501,F401 ."
+
+script:
+  tox -e $TOX_ENV

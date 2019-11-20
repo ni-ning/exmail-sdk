@@ -54,5 +54,3 @@ class BaseCache(object):
 
 class EmailCache(BaseCache):
     access_token = EmailCacheItem()
-
-
