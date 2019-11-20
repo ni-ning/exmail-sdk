@@ -1,7 +1,8 @@
 ################################
 Tencent Exmail SDK for Python
 ################################
-
+.. image:: https://img.shields.io/badge/pypi-v1.0.0-blue
+       :target: https://pypi.org/project/exmail-sdk/
 
 腾讯企业邮第三方 Python SDK。
 `【阅读文档】 <https://exmail-sdk.readthedocs.io/zh_CN/latest/>`_。
