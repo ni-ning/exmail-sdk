@@ -15,7 +15,7 @@ with open('requirements.txt') as f:
 
 sdict = {
     'name': 'exmail-sdk',
-    'version': __VERSION__,
+    'version': '1.0.0',
     'keywords': 'tencent, exmail, exmail-sdk, SDK',
     'packages': [
         'exmail',
