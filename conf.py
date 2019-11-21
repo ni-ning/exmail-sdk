@@ -8,7 +8,7 @@ except ImportError:
 
 def _load_to_dict(d, filename=None):
     if not filename:
-        filename = 'services.json-dev'
+        filename = 'dev-services.json'
 
     json_obj = json.load(open(filename))
     for (k, v) in json_obj.items():
