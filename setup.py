@@ -1,6 +1,5 @@
 # -*- coding:utf-8 -*-
 
-from exmail import __VERSION__
 from os import path
 
 here = path.abspath(path.dirname(__file__))
