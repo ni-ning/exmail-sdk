@@ -2,17 +2,12 @@
 from __future__ import absolute_import, unicode_literals
 import unittest
 
-import conf
 from exmail import SecretClient
 
 
 class BaseTestCase(unittest.TestCase):
+    value = 'DM-Qm7zFYZ1-ccqOgQkMUJZYqzMk4ObP7fhlk9-X0xYxc1uP5PpZXk6I7n2I5W-dxhE2qUzRNB-U8lDoV1MwnQ'
+    SecretClient.TESTING_ACCESS_TOKEN = dict(value=value, ttl=5600)
+    client = SecretClient()
 
-    if conf.TESTING_ENV == 'local':
-        config = getattr(conf, 'EXMAIL', {})
-        client = SecretClient(config['corp_id'], config['corp_secret'])
 
-    elif conf.TESTING_ENV == 'travis':
-        import os
-        print('******os.envrion******', os.environ)
-        client = SecretClient(os.environ['CORP_ID'], os.environ['CORP_SECRET'])

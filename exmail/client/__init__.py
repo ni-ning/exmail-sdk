@@ -7,6 +7,7 @@ from exmail.storage.cache import EmailCache
 
 
 class SecretClient(BaseClient):
+    TESTING_ACCESS_TOKEN = None
 
     user = api.User()
     department = api.Department()
@@ -17,9 +18,12 @@ class SecretClient(BaseClient):
     option = api.Option()
     service = api.Service()
 
-    def __init__(self, corp_id, corp_secret,
+    def __init__(self, corp_id=None, corp_secret=None,
                  prefix='client', storage=None,
                  timeout=None, auto_retry=True):
+        if not corp_id or not corp_secret:
+            assert self.TESTING_ACCESS_TOKEN
+
         super(SecretClient, self).__init__(storage, timeout, auto_retry)
         self.corp_id = corp_id
         self.corp_secret = corp_secret
@@ -50,6 +54,10 @@ class SecretClient(BaseClient):
         raise e
 
     def get_access_token(self):
+        if self.TESTING_ACCESS_TOKEN:
+            self.cache.access_token.set(value=self.TESTING_ACCESS_TOKEN['value'],
+                                        ttl=self.TESTING_ACCESS_TOKEN['ttl'])
+            return
         return self._request(
             'GET',
             '/gettoken',
