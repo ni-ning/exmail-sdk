@@ -66,8 +66,7 @@ class BaseClient(object):
         except requests.RequestException as e:
             logger.error('\n【请求方法和地址】: %s %s'
                          '\n【请求参数】: params %s, data: %s'
-                         '\n【异常信息】: %s' % (method, url,
-                                           kwargs.get('params', ''), kwargs.get('data', ''), str(e)))
+                         '\n【异常信息】: %s' % (method, url, kwargs.get('params', ''), kwargs.get('data', ''), str(e)))
 
             raise EmailClientException(
                 errcode=None,
@@ -99,8 +98,7 @@ class BaseClient(object):
             errmsg = result.get('errmsg', errcode)
             logger.error('\n【请求方法和地址】: %s %s'
                          '\n【请求参数】: params %s, data: %s'
-                         '\n【异常信息】: %s' % (method, url,
-                                           kwargs.get('params', ''), kwargs.get('data', ''), result))
+                         '\n【异常信息】: %s' % (method, url, kwargs.get('params', ''), kwargs.get('data', ''), result))
             raise EmailClientException(errcode,
                                        errmsg,
                                        client=self,
