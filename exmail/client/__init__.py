@@ -55,9 +55,7 @@ class SecretClient(BaseClient):
 
     def get_access_token(self):
         if self.TESTING_ACCESS_TOKEN:
-            self.cache.access_token.set(value=self.TESTING_ACCESS_TOKEN['value'],
-                                        ttl=self.TESTING_ACCESS_TOKEN['ttl'])
-            return
+            return self.TESTING_ACCESS_TOKEN
         return self._request(
             'GET',
             '/gettoken',
