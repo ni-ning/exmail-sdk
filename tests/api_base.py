@@ -9,5 +9,3 @@ class BaseTestCase(unittest.TestCase):
     value = 'DM-Qm7zFYZ1-ccqOgQkMUJZYqzMk4ObP7fhlk9-X0xYxc1uP5PpZXk6I7n2I5W-dxhE2qUzRNB-U8lDoV1MwnQ'
     SecretClient.TESTING_ACCESS_TOKEN = dict(value=value, ttl=5600)
     client = SecretClient()
-
-
