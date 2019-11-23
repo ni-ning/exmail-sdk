@@ -1,6 +1,8 @@
 ################################
 Tencent Exmail SDK for Python
 ################################
+.. image:: https://api.travis-ci.org/ni-ning/exmail-sdk.svg?branch=master
+       :target: https://travis-ci.org/ni-ning/exmail-sdk
 .. image:: https://img.shields.io/badge/pypi-v1.0.0-blue
        :target: https://pypi.org/project/exmail-sdk/
 
